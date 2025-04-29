@@ -10,6 +10,8 @@ namespace Tic_Tac_Toe
         private GameManager _gameManager;  
         private bool _playAgainstComputer = false;
         private bool _gameStarted = false;
+        private PictureBox[] _pictureBoxes;
+
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +22,45 @@ namespace Tic_Tac_Toe
         {
             // Inicialización básica, pero el juego no comienza hasta "Nuevo Juego"
             lblTiempoTrans.Text = "Tiempo: 0s";
-            lblCurrentPlayer.Text = "Selecciona 'Nuevo Juego' para comenzar";
+            lblCurrentPlayer.Text = "Selecciona un modode juego para comenzar";
+
+            _pictureBoxes = new PictureBox[9]
+           {
+                pictureBox1, pictureBox2, pictureBox3,
+                pictureBox4, pictureBox5, pictureBox6,
+                pictureBox7, pictureBox8, pictureBox9
+           };
+
+            for (int i = 0; i < 9; i++)
+            {
+                _pictureBoxes[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                _pictureBoxes[i].BorderStyle = BorderStyle.FixedSingle;
+                _pictureBoxes[i].Tag = i; // Guardamos la posición
+                _pictureBoxes[i].Click += PictureBox_Click;
+            }
+
+        }
+
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            if (!_gameStarted || _gameManager == null) return;
+
+            var picBox = sender as PictureBox;
+            int position = (int)picBox.Tag;
+
+            if (!_gameManager.IsCellEmpty(position)) return;
+
+            _gameManager.MakeMove(position);
+            UpdateBoard();
+
+            if (_playAgainstComputer && !_gameManager.IsGameOver())
+            {
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(500);
+                _gameManager.MakeComputerMove();
+                UpdateBoard();
+            }
+
         }
 
         private void StartNewGame(bool againstComputer)
@@ -28,7 +68,6 @@ namespace Tic_Tac_Toe
             _playAgainstComputer = againstComputer;
             _gameStarted = true;
 
-            // Si existe un viejo GameManager, quitar sus eventos
             if (_gameManager != null)
             {
                 _gameManager.TimeUpdated -= UpdateTimeDisplay;
@@ -37,17 +76,37 @@ namespace Tic_Tac_Toe
                 _gameManager.GameTied -= OnGameTied;
             }
 
-            // AHORA crear uno nuevo
             _gameManager = new GameManager(new HumanPlayer("Jugador", "X"));
 
-            // Suscribir eventos
             _gameManager.TimeUpdated += UpdateTimeDisplay;
             _gameManager.PlayerChanged += UpdatePlayerDisplay;
             _gameManager.GameWon += OnGameWon;
             _gameManager.GameTied += OnGameTied;
 
             _gameManager.StartNewGame();
-            tblTicTacToe.Invalidate();
+            UpdateBoard();
+
+        }
+
+        private void UpdateBoard()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                string symbol = _gameManager.GetSymbolAt(i);
+
+                if (symbol == "X")
+                {
+                    _pictureBoxes[i].Image = Properties.Resources.SymbolX;
+                }
+                else if (symbol == "O")
+                {
+                    _pictureBoxes[i].Image = Properties.Resources.SymbolO;
+                }
+                else
+                {
+                    _pictureBoxes[i].Image = null;
+                }
+            }
 
         }
 
@@ -78,8 +137,8 @@ namespace Tic_Tac_Toe
         private void OnGameWon(IPlayer winner)
         {
             MessageBox.Show($"¡{winner.Name} ha ganado!", "Fin del juego",
-                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-            tblTicTacToe.Invalidate();
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            _gameStarted = false;
         }
 
         private void OnGameTied()
@@ -87,7 +146,6 @@ namespace Tic_Tac_Toe
             _gameStarted = false;
             MessageBox.Show("¡Empate!", "Fin del juego",
                          MessageBoxButtons.OK, MessageBoxIcon.Information);
-            tblTicTacToe.Invalidate();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -109,80 +167,11 @@ namespace Tic_Tac_Toe
 
         private void tblTicTacToe_Paint(object sender, PaintEventArgs e)
         {
-            DrawBoard(e.Graphics);
-
-            if (_gameManager != null && _gameStarted)
-            {
-                DrawSymbols(e.Graphics);
-            }
-        }
-
-        private void DrawBoard(Graphics g)
-        {
-            using (var pen = new Pen(Color.Black, 2))
-            {
-                for (int i = 1; i <= 2; i++)
-                {
-                    g.DrawLine(pen, 0, i * 100, 300, i * 100);
-                    g.DrawLine(pen, i * 100, 0, i * 100, 300);
-                }
-            }
-        }
-
-        private void DrawSymbols(Graphics g)
-        {
-            for (int i = 0; i < 9; i++)
-            {
-                int row = i / 3;
-                int col = i % 3;
-                string symbol = _gameManager.GetSymbolAt(i);
-
-                if (!string.IsNullOrEmpty(symbol))
-                {
-                    Image symbolImage = null;
-
-                    if (symbol == "X")
-                    {
-                        symbolImage = Properties.Resources.SymbolX;  // Usando la imagen de X
-                    }
-                    else if (symbol == "O")
-                    {
-                        symbolImage = Properties.Resources.SymbolO;  // Usando la imagen de O
-                    }
-
-                    if (symbolImage != null)
-                    {
-                        // Ajuste para asegurar que la imagen se dibuje bien en la celda
-                        g.DrawImage(symbolImage,
-                                    col * 100 + 10,
-                                    row * 100 + 10,
-                                    80, 80); // Ajustar el tamaño si es necesario
-                    }
-                }
-            }
         }
 
         private void tblTicTacToe_MouseClick(object sender, MouseEventArgs e)
         {
-            if (!_gameStarted || _gameManager == null) return;
-
-            int row = e.Y / 100;
-            int col = e.X / 100;
-            int position = row * 3 + col;
-
-            if (!_gameManager.IsCellEmpty(position)) return;
-
-            _gameManager.MakeMove(position);
-            tblTicTacToe.Invalidate();
-
-            if (_playAgainstComputer && !_gameManager.IsGameOver())
-            {
-                Application.DoEvents();
-                System.Threading.Thread.Sleep(500);
-
-                _gameManager.MakeComputerMove();
-                tblTicTacToe.Invalidate();
-            }
+ 
         }
 
         private void gboxTicTac_Enter(object sender, EventArgs e)
