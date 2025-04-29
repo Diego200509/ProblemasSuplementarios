@@ -28,10 +28,7 @@ namespace Tic_Tac_Toe
             _playAgainstComputer = againstComputer;
             _gameStarted = true;
 
-            // Crear nuevo juego
-            _gameManager = new GameManager(new HumanPlayer("Jugador", "X"));
-
-            // Limpiar suscripciones previas
+            // Si existe un viejo GameManager, quitar sus eventos
             if (_gameManager != null)
             {
                 _gameManager.TimeUpdated -= UpdateTimeDisplay;
@@ -40,7 +37,10 @@ namespace Tic_Tac_Toe
                 _gameManager.GameTied -= OnGameTied;
             }
 
-            // Suscribir a los eventos
+            // AHORA crear uno nuevo
+            _gameManager = new GameManager(new HumanPlayer("Jugador", "X"));
+
+            // Suscribir eventos
             _gameManager.TimeUpdated += UpdateTimeDisplay;
             _gameManager.PlayerChanged += UpdatePlayerDisplay;
             _gameManager.GameWon += OnGameWon;
@@ -48,6 +48,7 @@ namespace Tic_Tac_Toe
 
             _gameManager.StartNewGame();
             tblTicTacToe.Invalidate();
+
         }
 
         private void UpdateTimeDisplay(int seconds)
@@ -138,12 +139,25 @@ namespace Tic_Tac_Toe
 
                 if (!string.IsNullOrEmpty(symbol))
                 {
-                    var brush = symbol == "X" ? Brushes.Blue : Brushes.Red;
-                    g.DrawString(symbol,
-                                new Font("Arial", 24, FontStyle.Bold),
-                                brush,
-                                col * 100 + 30,
-                                row * 100 + 30);
+                    Image symbolImage = null;
+
+                    if (symbol == "X")
+                    {
+                        symbolImage = Properties.Resources.SymbolX;  // Usando la imagen de X
+                    }
+                    else if (symbol == "O")
+                    {
+                        symbolImage = Properties.Resources.SymbolO;  // Usando la imagen de O
+                    }
+
+                    if (symbolImage != null)
+                    {
+                        // Ajuste para asegurar que la imagen se dibuje bien en la celda
+                        g.DrawImage(symbolImage,
+                                    col * 100 + 10,
+                                    row * 100 + 10,
+                                    80, 80); // Ajustar el tamaño si es necesario
+                    }
                 }
             }
         }
@@ -156,16 +170,13 @@ namespace Tic_Tac_Toe
             int col = e.X / 100;
             int position = row * 3 + col;
 
-            // Verificar si la celda está vacía
             if (!_gameManager.IsCellEmpty(position)) return;
 
             _gameManager.MakeMove(position);
             tblTicTacToe.Invalidate();
 
-            // Si es contra computadora y el juego no ha terminado
             if (_playAgainstComputer && !_gameManager.IsGameOver())
             {
-                // Pequeña pausa para que el jugador vea su movimiento
                 Application.DoEvents();
                 System.Threading.Thread.Sleep(500);
 
