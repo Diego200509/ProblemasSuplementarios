@@ -35,6 +35,8 @@
             this.btnNuevoJuego = new System.Windows.Forms.Button();
             this.btnJugarComputadora = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.lblTiempo = new System.Windows.Forms.Label();
+            this.lblTiempoTrans = new System.Windows.Forms.Label();
             this.gboxInicio.SuspendLayout();
             this.gboxTicTac.SuspendLayout();
             this.SuspendLayout();
@@ -54,6 +56,8 @@
             // 
             // gboxTicTac
             // 
+            this.gboxTicTac.Controls.Add(this.lblTiempoTrans);
+            this.gboxTicTac.Controls.Add(this.lblTiempo);
             this.gboxTicTac.Controls.Add(this.tblTicTacToe);
             this.gboxTicTac.Location = new System.Drawing.Point(271, 12);
             this.gboxTicTac.Name = "gboxTicTac";
@@ -119,6 +123,27 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
+            // lblTiempo
+            // 
+            this.lblTiempo.AutoSize = true;
+            this.lblTiempo.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiempo.Location = new System.Drawing.Point(430, 22);
+            this.lblTiempo.Name = "lblTiempo";
+            this.lblTiempo.Size = new System.Drawing.Size(117, 35);
+            this.lblTiempo.TabIndex = 1;
+            this.lblTiempo.Text = "Tiempo: ";
+            // 
+            // lblTiempoTrans
+            // 
+            this.lblTiempoTrans.AutoSize = true;
+            this.lblTiempoTrans.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiempoTrans.Location = new System.Drawing.Point(543, 22);
+            this.lblTiempoTrans.Name = "lblTiempoTrans";
+            this.lblTiempoTrans.Size = new System.Drawing.Size(82, 35);
+            this.lblTiempoTrans.TabIndex = 2;
+            this.lblTiempoTrans.Text = "0.00s";
+            this.lblTiempoTrans.Click += new System.EventHandler(this.label1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -133,6 +158,7 @@
             this.gboxInicio.ResumeLayout(false);
             this.gboxInicio.PerformLayout();
             this.gboxTicTac.ResumeLayout(false);
+            this.gboxTicTac.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -146,6 +172,8 @@
         private System.Windows.Forms.Button btnNuevoJuego;
         private System.Windows.Forms.Button btnJugarComputadora;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblTiempo;
+        private System.Windows.Forms.Label lblTiempoTrans;
     }
 }
 
