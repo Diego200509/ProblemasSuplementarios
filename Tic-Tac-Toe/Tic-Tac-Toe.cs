@@ -175,7 +175,8 @@ namespace Tic_Tac_Toe
 
         private void btnNuevoJuego_Click(object sender, EventArgs e)
         {
-            StartNewGame(_playAgainstComputer);
+            StartNewGame(false);
+
         }
 
         private void tblTicTacToe_Paint(object sender, PaintEventArgs e)
@@ -199,8 +200,7 @@ namespace Tic_Tac_Toe
 
         private void btnJugarComputadora_Click(object sender, EventArgs e)
         {
-            _playAgainstComputer = true;
-            btnNuevoJuego_Click(sender, e);
+            StartNewGame(true);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
