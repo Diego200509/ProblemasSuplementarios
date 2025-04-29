@@ -5,29 +5,30 @@ namespace Tic_Tac_Toe.Game
     public class GameManager
     {
         private readonly Board _board;
+        private readonly IPlayer _playerX;
+        private readonly IPlayer _playerO;
         private IPlayer _currentPlayer;
         private readonly GameTimer _gameTimer;
 
         public event Action<int> TimeUpdated;
-
         public event Action<IPlayer> PlayerChanged;
-
         public event Action<IPlayer> GameWon;
-
         public event Action GameTied;
 
-        public GameManager(IPlayer firstPlayer)
+        public GameManager(IPlayer playerX, IPlayer playerO)
         {
+            _playerX = playerX ?? throw new ArgumentNullException(nameof(playerX));
+            _playerO = playerO ?? throw new ArgumentNullException(nameof(playerO));
+            _currentPlayer = _playerX;
             _board = new Board();
-            _currentPlayer = firstPlayer ?? throw new ArgumentNullException(nameof(firstPlayer));
             _gameTimer = new GameTimer();
-
             _gameTimer.TimeUpdated += OnTimeUpdated;
         }
 
         public void StartNewGame()
         {
             _board.Clear();
+            _currentPlayer = _playerX; // Siempre empieza X
             _gameTimer.Start();
             PlayerChanged?.Invoke(_currentPlayer);
         }
@@ -44,15 +45,7 @@ namespace Tic_Tac_Toe.Game
 
         public void SwitchPlayer()
         {
-            if (_currentPlayer is HumanPlayer)
-            {
-                _currentPlayer = new ComputerPlayer("Computer", "O");
-            }
-            else
-            {
-                _currentPlayer = new HumanPlayer("Player 1", "X");
-            }
-
+            _currentPlayer = _currentPlayer == _playerX ? _playerO : _playerX;
             PlayerChanged?.Invoke(_currentPlayer);
         }
 
@@ -97,19 +90,11 @@ namespace Tic_Tac_Toe.Game
             }
         }
 
-        public string GetSymbolAt(int index)
-        {
-            return _board.GetSymbolAt(index);
-        }
+        public string GetSymbolAt(int index) => _board.GetSymbolAt(index);
 
-        public bool IsCellEmpty(int position)
-        {
-            return _board.IsCellEmpty(position);
-        }
+        public bool IsCellEmpty(int position) => _board.IsCellEmpty(position);
 
-        public bool IsGameOver()
-        {
-            return _board.CheckWinner() || _board.IsFull();
-        }
+        public bool IsGameOver() => _board.CheckWinner() || _board.IsFull();
     }
+
 }

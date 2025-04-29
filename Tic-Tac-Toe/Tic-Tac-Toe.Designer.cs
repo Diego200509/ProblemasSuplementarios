@@ -69,7 +69,7 @@
             this.gboxInicio.Location = new System.Drawing.Point(12, 12);
             this.gboxInicio.Margin = new System.Windows.Forms.Padding(4);
             this.gboxInicio.Name = "gboxInicio";
-            this.gboxInicio.Size = new System.Drawing.Size(252, 479);
+            this.gboxInicio.Size = new System.Drawing.Size(300, 479);
             this.gboxInicio.TabIndex = 0;
             this.gboxInicio.TabStop = false;
             // 
@@ -78,7 +78,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.Location = new System.Drawing.Point(16, 230);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(227, 42);
+            this.btnSalir.Size = new System.Drawing.Size(258, 42);
             this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             this.btnJugarComputadora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnJugarComputadora.Location = new System.Drawing.Point(16, 159);
             this.btnJugarComputadora.Name = "btnJugarComputadora";
-            this.btnJugarComputadora.Size = new System.Drawing.Size(227, 55);
+            this.btnJugarComputadora.Size = new System.Drawing.Size(258, 55);
             this.btnJugarComputadora.TabIndex = 2;
             this.btnJugarComputadora.Text = "Jugar con computadora";
             this.btnJugarComputadora.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             this.btnNuevoJuego.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoJuego.Location = new System.Drawing.Point(16, 90);
             this.btnNuevoJuego.Name = "btnNuevoJuego";
-            this.btnNuevoJuego.Size = new System.Drawing.Size(227, 49);
+            this.btnNuevoJuego.Size = new System.Drawing.Size(258, 49);
             this.btnNuevoJuego.TabIndex = 1;
             this.btnNuevoJuego.Text = "Nuevo Juego";
             this.btnNuevoJuego.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(48, 22);
+            this.lblTitulo.Location = new System.Drawing.Point(66, 22);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(167, 35);
             this.lblTitulo.TabIndex = 0;
@@ -124,7 +124,7 @@
             this.gboxTicTac.Controls.Add(this.lblCurrentPlayer);
             this.gboxTicTac.Controls.Add(this.lblTiempoTrans);
             this.gboxTicTac.Controls.Add(this.tblTicTacToe);
-            this.gboxTicTac.Location = new System.Drawing.Point(271, 12);
+            this.gboxTicTac.Location = new System.Drawing.Point(319, 12);
             this.gboxTicTac.Name = "gboxTicTac";
             this.gboxTicTac.Size = new System.Drawing.Size(700, 479);
             this.gboxTicTac.TabIndex = 1;
@@ -263,7 +263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 503);
+            this.ClientSize = new System.Drawing.Size(1076, 503);
             this.Controls.Add(this.gboxTicTac);
             this.Controls.Add(this.gboxInicio);
             this.Name = "Form1";

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using Tic_Tac_Toe.Game;
 
@@ -76,7 +75,21 @@ namespace Tic_Tac_Toe
                 _gameManager.GameTied -= OnGameTied;
             }
 
-            _gameManager = new GameManager(new HumanPlayer("Jugador", "X"));
+            if (_playAgainstComputer)
+            {
+                _gameManager = new GameManager(
+                    new HumanPlayer("Jugador", "X"),
+                    new ComputerPlayer("Computadora", "O")
+                );
+            }
+            else
+            {
+                _gameManager = new GameManager(
+                    new HumanPlayer("Jugador 1", "X"),
+                    new HumanPlayer("Jugador 2", "O")
+                );
+            }
+
 
             _gameManager.TimeUpdated += UpdateTimeDisplay;
             _gameManager.PlayerChanged += UpdatePlayerDisplay;
