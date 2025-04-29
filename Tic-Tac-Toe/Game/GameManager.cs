@@ -1,28 +1,51 @@
-﻿namespace Tic_Tac_Toe.Game
+﻿using System;
+
+namespace Tic_Tac_Toe.Game
 {
     public class GameManager
     {
         private Board _board;
-        public IPlayer CurrentPlayer { get; set; }
+        private IPlayer _currentPlayer;
+        private GameTimer _gameTimer;  // Instancia de GameTimer
 
-        public GameManager()
+        public GameManager(IPlayer initialPlayer)
         {
             _board = new Board();
-            // Aquí puedes agregar cualquier tipo de jugador sin modificar la clase GameManager
-            CurrentPlayer = new HumanPlayer("Player 1", "X");
+            _currentPlayer = initialPlayer;
+            _gameTimer = new GameTimer();
+
+            // Suscribir el evento para actualizar el tiempo
+            _gameTimer.TimeUpdated += OnTimeUpdated;
+        }
+
+        public void StartGame()
+        {
+            _gameTimer.Start();  // Iniciar el temporizador
+        }
+
+        public void EndGame()
+        {
+            _gameTimer.Stop();  // Detener el temporizador
+        }
+
+        // Evento para manejar la actualización del tiempo
+        private void OnTimeUpdated(int secondsElapsed)
+        {
+            // Aquí puedes actualizar la UI con el tiempo transcurrido
+            Console.WriteLine($"Tiempo transcurrido: {secondsElapsed}s");
         }
 
         public void SwitchPlayer()
         {
-            if (CurrentPlayer is HumanPlayer)
-                CurrentPlayer = new ComputerPlayer("Computer", "O");  // Cambiar a un jugador de computadora
+            if (_currentPlayer is HumanPlayer)
+                _currentPlayer = new ComputerPlayer("Computer", "O");
             else
-                CurrentPlayer = new HumanPlayer("Player 1", "X");  // Cambiar a un jugador humano
+                _currentPlayer = new HumanPlayer("Player 1", "X");
         }
 
         public void MakeMove(string position)
         {
-            _board.UpdateBoard(position, CurrentPlayer.Symbol);
+            _board.UpdateBoard(position, _currentPlayer.Symbol);
         }
     }
 }
