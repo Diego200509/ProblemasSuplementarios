@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\GameTimer.cs" />
+    <Compile Include="Game\IComputerPlayer.cs" />
+    <Compile Include="Game\IHumanPlayer.cs" />
     <Compile Include="Tic-Tac-Toe.cs">
       <SubType>Form</SubType>
     </Compile>

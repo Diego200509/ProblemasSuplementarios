@@ -1,20 +1,24 @@
-﻿namespace Tic_Tac_Toe.Game
+﻿using System;
+
+namespace Tic_Tac_Toe.Game
 {
-    public class HumanPlayer : IPlayer
+    public class HumanPlayer : IHumanPlayer
     {
-        public string Name { get; set; }
-        public string Symbol { get; set; }
+        public string Name { get; }
+        public string Symbol { get; }
 
         public HumanPlayer(string name, string symbol)
         {
-            Name = name;
-            Symbol = symbol;
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Symbol = symbol ?? throw new ArgumentNullException(nameof(symbol));
         }
 
-        public void MakeMove(Board board)
+        public void MakeMove(Board board, int position)
         {
-            // Lógica para hacer un movimiento como jugador humano
-            // Ejemplo: el humano selecciona una casilla en el tablero
+            if (board == null) throw new ArgumentNullException(nameof(board));
+            if (position < 0 || position >= 9) throw new ArgumentOutOfRangeException(nameof(position));
+
+            board.UpdateCell(position, Symbol);
         }
     }
 }

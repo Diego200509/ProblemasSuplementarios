@@ -2,9 +2,7 @@
 {
     public interface IPlayer
     {
-        string Name { get; set; }
-        string Symbol { get; set; }
-
-        void MakeMove(Board board);
+        string Name { get; }
+        string Symbol { get; }
     }
 }

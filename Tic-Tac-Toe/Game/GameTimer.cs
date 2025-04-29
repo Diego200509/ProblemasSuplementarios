@@ -37,13 +37,7 @@ namespace Tic_Tac_Toe.Game
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             _secondsElapsed++;
-            TimeUpdated?.Invoke(_secondsElapsed); // Llamar al evento TimeUpdated para notificar el cambio  
-        }
-
-        // Obtener el tiempo transcurrido  
-        public int GetElapsedTime()
-        {
-            return _secondsElapsed;
+            TimeUpdated?.Invoke(_secondsElapsed); 
         }
     }
 }
