@@ -7,7 +7,7 @@
     <ProjectGuid>{F254AA9D-5EFC-4AA6-B903-0CA6ED3494FA}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Tic_Tac_Toe</RootNamespace>
-    <AssemblyName>Tic_Tac_Toe</AssemblyName>
+    <AssemblyName>Tic-Tac-Toe</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,12 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Tic-Tac-Toe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Tic-Tac-Toe.Designer.cs">
+      <DependentUpon>Tic-Tac-Toe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\Board.cs" />
+    <Compile Include="Game\ComputerPlayer.cs" />
+    <Compile Include="Game\GameManager.cs" />
+    <Compile Include="Game\HumanPlayer.cs" />
+    <Compile Include="Game\IPlayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -63,6 +68,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tic-Tac-Toe.resx">
+      <DependentUpon>Tic-Tac-Toe.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
