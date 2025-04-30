@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,21 +17,21 @@ namespace Division_Manual {
         /// <param name="dividend"></param>
         /// <param name="divisor"></param>
         /// <exception cref="DivideByZeroException"></exception>
-        public void Divison(int dividend, int divisor) {
+        public void Divison(BigInteger dividend, BigInteger divisor) {
             if (divisor == 0) {
                 throw new DivideByZeroException("El divisor no puede ser cero.");
             }
 
             string dividendStr = dividend.ToString();
-            int remainder = 0;
-
+            BigInteger remainder = 0;
+            System.Console.WriteLine(dividend + " | " + divisor);
+            Printer p = new();
             foreach (char digitChar in dividendStr) {
                 int digit = int.Parse(digitChar.ToString());
-                int currentDividend = remainder * 10 + digit;
-                int partialQuotient = currentDividend / divisor;
+                BigInteger currentDividend = remainder * 10 + digit;
+                BigInteger partialQuotient = currentDividend / divisor;
                 remainder = currentDividend % divisor;
-
-                Console.WriteLine("Dividendo: " + currentDividend + "\tCociente: " +partialQuotient + "\tResiduo: " +remainder);
+                p.Print(partialQuotient, remainder);
             }
 
             Console.WriteLine($"Resultado final: cociente = {dividend / divisor}, residuo = {dividend % divisor}");

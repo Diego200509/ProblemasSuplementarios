@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -12,7 +12,7 @@ namespace Division_Manual {
     /// both are dependant on abstractions
     /// OCP: A class is open for extension but closed for modification
     /// </summary>
-    public interface IIntDivision {
-        public void Divison(BigInteger a, BigInteger b);
+    public interface IPrinter {
+        public void Print(BigInteger divisor, BigInteger remainder);
     }
 }
