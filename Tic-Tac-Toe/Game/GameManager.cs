@@ -65,7 +65,7 @@ namespace Tic_Tac_Toe.Game
 
         private void CheckGameState()
         {
-            if (_board.CheckWinner())
+            if (_board.CheckWinner() != null)
             {
                 GameWon?.Invoke(_currentPlayer);
                 EndGame();
@@ -94,7 +94,7 @@ namespace Tic_Tac_Toe.Game
 
         public bool IsCellEmpty(int position) => _board.IsCellEmpty(position);
 
-        public bool IsGameOver() => _board.CheckWinner() || _board.IsFull();
+        public bool IsGameOver() => _board.CheckWinner() != null || _board.IsFull();
     }
 
 }
