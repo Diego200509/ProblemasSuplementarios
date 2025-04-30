@@ -30,7 +30,7 @@ namespace Division_Manual {
                 int partialQuotient = currentDividend / divisor;
                 remainder = currentDividend % divisor;
 
-                Console.WriteLine(currentDividend + " " +partialQuotient + " " +remainder);
+                Console.WriteLine("Dividendo: " + currentDividend + "\tCociente: " +partialQuotient + "\tResiduo: " +remainder);
             }
 
             Console.WriteLine($"Resultado final: cociente = {dividend / divisor}, residuo = {dividend % divisor}");
