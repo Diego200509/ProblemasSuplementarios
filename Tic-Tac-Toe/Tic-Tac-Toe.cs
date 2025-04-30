@@ -79,7 +79,7 @@ namespace Tic_Tac_Toe
             {
                 _gameManager = new GameManager(
                     new HumanPlayer("Jugador", "X"),
-                    new ComputerPlayer("Computadora", "O")
+                    new ComputerPlayer("Computadora", "O", "X")
                 );
             }
             else
