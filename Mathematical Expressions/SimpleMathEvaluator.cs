@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Mathematical_Expressions
@@ -24,6 +25,8 @@ namespace Mathematical_Expressions
 
             // Eliminar espacios en blanco
             expression = expression.Replace(" ", "");
+            expression = Regex.Replace(expression, @"(\d)\(", "$1*("); // 1( → 1*(
+            expression = Regex.Replace(expression, @"\)(\d)", ")*$1"); // )1 → )*1
 
             // Usar DataTable para evaluar la expresión (solución simple)
             // En una implementación real usaríamos un parser más robusto

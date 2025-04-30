@@ -26,8 +26,8 @@ namespace Division
                 Console.WriteLine("Error: No se puede dividir por cero.");
                 return;
             }
-
-            IIntDivision div = new LongDivision();
+            IPrinter printer = new Printer();
+            IIntDivision div = new LongDivision(printer);
             div.Divison(dividend, divisor);
         }
     }

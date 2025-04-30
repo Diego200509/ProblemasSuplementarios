@@ -15,18 +15,21 @@ namespace Division_Manual
     /// </summary>
     public class Printer : IPrinter
     {
-        private string _spaces;
-
-        public Printer()
+        public void PrintStep(int position, BigInteger current, BigInteger subtract, int offset)
         {
-            this._spaces = "";
+            Console.WriteLine($"{new string(' ', position+1)} {current}");
+            Console.WriteLine($"{new string(' ', position)}- {subtract}");
+            Console.WriteLine($"{new string(' ', position)}  {new string('-', subtract.ToString().Length)}");
         }
-        public void Print(BigInteger divisor, BigInteger remainder)
-        {
-            this._spaces += " ";
-            System.Console.WriteLine( this._spaces + remainder + " | ");
-            System.Console.WriteLine(this._spaces + "-" + remainder + "| ");
 
+        public void PrintRemainder(BigInteger remainder, int position)
+        {
+            Console.WriteLine($"{new string(' ', position)}{remainder}");
+        }
+
+        public void PrintHeader(BigInteger dividend, BigInteger divisor)
+        {
+            Console.WriteLine($"{dividend} | {divisor}");
         }
     }
 }
