@@ -8,16 +8,14 @@ namespace Tic_Tac_Toe.Game
         public string Symbol { get; }
         private string OpponentSymbol => Symbol == "X" ? "O" : "X";
 
-        private readonly string OpponentSymbol;
-
-        public ComputerPlayer(string name, string symbol, string opponent)
+        public ComputerPlayer(string name, string symbol)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Symbol = symbol ?? throw new ArgumentNullException(nameof(symbol));
-            OpponentSymbol = symbol ?? throw new ArgumentNullException(nameof(opponent));
         }
 
-        public void MakeAutomaticMove(Board board) {
+        public void MakeAutomaticMove(Board board)
+        {
             if (board == null) throw new ArgumentNullException(nameof(board));
 
             int bestScore = int.MinValue;
