@@ -13,6 +13,6 @@ namespace Division_Manual {
     /// OCP: A class is open for extension but closed for modification
     /// </summary>
     public interface IIntDivision {
-        public void Divison(BigInteger a, BigInteger b);
+        public void Divison(BigInt dividend, BigInt divisor);
     }
 }

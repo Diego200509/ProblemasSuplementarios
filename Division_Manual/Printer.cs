@@ -15,19 +15,19 @@ namespace Division_Manual
     /// </summary>
     public class Printer : IPrinter
     {
-        public void PrintStep(int position, BigInteger current, BigInteger subtract, int offset)
+        public void PrintStep(int pos, BigInt current, BigInt subtract, int depth)
         {
-            Console.WriteLine($"{new string(' ', position+1)} {current}");
-            Console.WriteLine($"{new string(' ', position)}- {subtract}");
-            Console.WriteLine($"{new string(' ', position)}  {new string('-', subtract.ToString().Length)}");
+            string currentStr = current.ToString();
+            string subtractStr = subtract.ToString();
+            Console.WriteLine($"{new string(' ', pos - subtractStr.Length)}{subtractStr}");
+            Console.WriteLine($"{new string(' ', pos - subtractStr.Length)}{new string('-', subtractStr.Length)}");
         }
-
-        public void PrintRemainder(BigInteger remainder, int position)
+        public void PrintRemainder(BigInt remainder, int position)
         {
             Console.WriteLine($"{new string(' ', position)}{remainder}");
         }
 
-        public void PrintHeader(BigInteger dividend, BigInteger divisor)
+        public void PrintHeader(BigInt dividend, BigInt divisor)
         {
             Console.WriteLine($"{dividend} | {divisor}");
         }

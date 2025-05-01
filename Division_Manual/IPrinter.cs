@@ -15,8 +15,8 @@ namespace Division_Manual
     /// </summary>
     public interface IPrinter
     {
-        public void PrintHeader(BigInteger dividend, BigInteger divisor);
-        public void PrintStep(int position, BigInteger current, BigInteger subtract, int offset);
-        public void PrintRemainder(BigInteger remainder, int position);
+        public void PrintHeader(BigInt dividend, BigInt divisor);
+        public void PrintStep(int position, BigInt current, BigInt subtract, int offset);
+        public void PrintRemainder(BigInt remainder, int position);
     }
 }

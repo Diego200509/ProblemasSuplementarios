@@ -1,69 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
+using Division_Manual;
 
-namespace Division_Manual
+public class LongDivision : IIntDivision
 {
-    public class LongDivision : IIntDivision
+    public IPrinter Printer { get; set; }
+
+    public LongDivision(IPrinter printer)
     {
+        this.Printer = printer;
+    }
+    public void Divison(BigInt dividend, BigInt divisor)
+    {
+        if (divisor.ToString() == "0")
+            throw new DivideByZeroException("El divisor no puede ser cero.");
 
-        public IPrinter Printer { get; set; }
+        this.Printer.PrintHeader(dividend, divisor);
 
-        public LongDivision(IPrinter printer)
+        string dividendStr = dividend.ToString();
+        StringBuilder quotient = new();
+        BigInt remainder = new("0");
+
+        int stepOffset = 0;
+        for (int i = 0; i < dividendStr.Length; i++)
         {
-            this.Printer = printer;
-        }
-        /// <summary>
-        /// SRP: Class has only one responsability
-        /// OCP: Class is open for extension but closed for modification
-        /// LSP: Class implements all methods from parent class
-        /// DIP: Class is dependant on an abstraction
-        /// </summary>
-        /// <param name="dividend"></param>
-        /// <param name="divisor"></param>
-        /// <exception cref="DivideByZeroException"></exception>
-        public void Divison(BigInteger dividend, BigInteger divisor)
-        {
-            if (divisor == 0)
-                throw new DivideByZeroException("El divisor no puede ser cero.");
+            remainder = new BigInt(remainder.ToString() + dividendStr[i]);
 
-            string dividendStr = dividend.ToString();
-            this.Printer.PrintHeader(dividend, divisor);
-            StringBuilder quotient = new StringBuilder();
-            BigInteger remainder = 0;
-            for (int i = 0; i < dividendStr.Length; i++)
+            if (remainder.CompareTo(divisor) < 0 && quotient.Length > 0)
             {
-                int digit = int.Parse(dividendStr[i].ToString());
-                BigInteger current = remainder * 10 + digit;
-
-                if (current < divisor && quotient.Length > 0)
-                {
-                    quotient.Append("0");
-                    continue;
-                }
-
-                if (current >= divisor)
-                {
-                    BigInteger q = current / divisor;
-                    BigInteger subtract = q * divisor;
-                    quotient.Append(q);
-                    int position = i + 3;
-                    this.Printer.PrintStep(position - subtract.ToString().Length, current, subtract, 0);
-                    remainder = current % divisor;
-                }
-                else
-                {
-                    remainder = current;
-                }
+                quotient.Append("0");
+                stepOffset++;
+                continue;
             }
 
-            this.Printer.PrintRemainder(remainder, dividendStr.Length + 2);
+            int q = 0;
+            BigInt subtrahend = new("0");
+            while (remainder.CompareTo(divisor) >= 0)
+            {
+                remainder = remainder.Subtract(divisor);
+                q++;
+            }
 
-            Console.WriteLine($"\nResultado final: cociente = {dividend / divisor}, residuo = {dividend % divisor}");
+            subtrahend = divisor.Multiply(q);
+            quotient.Append(q);
+
+            int subtractPos = i + 1;
+            this.Printer.PrintStep(subtractPos, new BigInt(remainder.ToString() + dividendStr[i]), subtrahend, 0);
         }
+
+        this.Printer.PrintRemainder(remainder, dividendStr.Length + 1);
+        Console.WriteLine($"\nResultado final: cociente = {quotient}, residuo = {remainder}");
     }
+
 }
