@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tic-Tac-Toe", "Tic-Tac-Toe\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Division_Manual", "Division_Manual\Division_Manual.csproj", "{1082198D-DDA2-6AF8-5DF8-B7F028CA4C2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ahorcado", "Ahorcado\Ahorcado.csproj", "{95B08FC0-811B-480D-BB39-A0EB41360C88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1082198D-DDA2-6AF8-5DF8-B7F028CA4C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1082198D-DDA2-6AF8-5DF8-B7F028CA4C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1082198D-DDA2-6AF8-5DF8-B7F028CA4C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95B08FC0-811B-480D-BB39-A0EB41360C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95B08FC0-811B-480D-BB39-A0EB41360C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95B08FC0-811B-480D-BB39-A0EB41360C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95B08FC0-811B-480D-BB39-A0EB41360C88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
