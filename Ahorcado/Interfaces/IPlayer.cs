@@ -1,14 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ahorcado {
+namespace Ahorcado
+{
     public interface IPlayer
     {
-        public string ChooseWord();
-        public int GetTries();
-        public void SetTries(int lives);
+        public string Name { get; }
+        public string GetGuess();
+        public void NotifyResult(string letter, bool correct);
     }
 }

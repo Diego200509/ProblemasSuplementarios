@@ -10,10 +10,12 @@ namespace Ahorcado
     {
         static void Main(string[] args)
         {
-            HumanPlayer player1 = new HumanPlayer();
-            IGame juego = new ComputerGame(player1);
-            IPlayer ganador = juego.PlayGame();
-            System.Console.WriteLine($"El ganador es {ganador.GetType().ToString()}");
+            var game = new TurnBasedHangmanGame(
+                new FileWordProvider("palabras.txt"),
+                new HumanPlayer("Jugador 1"),
+                new ComputerPlayer()
+            );
+            game.Start();
         }
     }
 }

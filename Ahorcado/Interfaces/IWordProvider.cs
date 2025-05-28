@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ahorcado {
-    public interface IWordPicker
+namespace Ahorcado
+{
+    public interface IWordProvider
     {
-        public string PickRandomWord();
+        public string GetWord();
     }
 }
