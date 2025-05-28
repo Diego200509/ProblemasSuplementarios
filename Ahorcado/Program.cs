@@ -11,7 +11,7 @@ namespace Ahorcado
         static void Main(string[] args)
         {
             var game = new PvPHangmanGame(
-                new RandomWordProvider(),
+                new FileWordProvider("palabras.txt"),
                 new HumanPlayer("Jugador 1"),
                 new ComputerPlayer()
             );
