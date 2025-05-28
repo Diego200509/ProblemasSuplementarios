@@ -8,18 +8,20 @@ namespace Ahorcado
 {
     public class RandomWordProvider : IWordProvider
     {
-        private readonly int _length;
         private readonly string[] _words;
-        public RandomWordProvider(int length)
+        public RandomWordProvider()
         {
-            _length = length;
+            this._words = new string[] {
+                "argentino",
+                "narco",
+                "aeropuerto"
+            };
         }
 
         public string GetWord()
         {
             var rnd = new Random();
-            return new string(Enumerable.Range(0, _length)
-                .Select(_ => (char)rnd.Next('a', 'z' + 1)).ToArray());
+            return this._words[rnd.Next(this._words.Length)];
         }
     }
 }

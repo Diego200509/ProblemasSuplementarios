@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ahorcado
 {
-    public class TurnBasedHangmanGame : IGame
+    public class PvPHangmanGame : IGame
     {
         private readonly IWordProvider _wordProvider;
         private readonly IPlayer[] _players;
@@ -16,7 +16,7 @@ namespace Ahorcado
         private HashSet<char> _guessedLetters = new();
         private int _maxAttempts = 10;
 
-        public TurnBasedHangmanGame(IWordProvider provider, IPlayer player1, IPlayer player2)
+        public PvPHangmanGame(IWordProvider provider, IPlayer player1, IPlayer player2)
         {
             _wordProvider = provider;
             _players = new[] { player1, player2 };

@@ -9,7 +9,10 @@ namespace Ahorcado
     public class FileWordProvider : IWordProvider
     {
         private readonly string _filePath;
-        public FileWordProvider(string filePath) => _filePath = filePath;
+        public FileWordProvider(string filePath)
+        {
+            _filePath = filePath;
+        }
 
         public string GetWord()
         {

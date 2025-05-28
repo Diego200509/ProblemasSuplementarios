@@ -10,8 +10,8 @@ namespace Ahorcado
     {
         static void Main(string[] args)
         {
-            var game = new TurnBasedHangmanGame(
-                new FileWordProvider("palabras.txt"),
+            var game = new PvPHangmanGame(
+                new RandomWordProvider(),
                 new HumanPlayer("Jugador 1"),
                 new ComputerPlayer()
             );
