@@ -27,7 +27,7 @@ namespace MagicSquare8
             MagicGrid.Children.Clear();
             SumResultsText.Text = string.Empty;
 
-            // 1) Genera y construye
+            //Genera y construye
             var numbers = _numberGenerator.Generate().ToList();
             var square = _builder.Build(numbers);
 
@@ -38,7 +38,7 @@ namespace MagicSquare8
                 return;
             }
 
-            // 2) Pinta el cuadrado
+            //Pinta el cuadrado
             const int n = 4;
             for (int fila = 0; fila < n; fila++)
                 for (int col = 0; col < n; col++)
@@ -54,12 +54,8 @@ namespace MagicSquare8
                     MagicGrid.Children.Add(tb);
                 }
 
-            // 3) Calcula y muestra las sumas
-            var lines = new[]
-            {
-                // Suma target (opcional)
-                $"Target (fila 0): {Enumerable.Range(0, n).Sum(j => square[0, j].Value)}",
-            }.ToList();
+            //Calcula y muestra las sumas
+            var lines = new List<string>();
 
             // Filas
             for (int i = 0; i < n; i++)
