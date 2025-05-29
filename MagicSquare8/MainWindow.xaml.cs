@@ -13,6 +13,7 @@ namespace MagicSquare8
 
         private readonly INumberGenerator _numberGenerator;
         private readonly IMagicSquareBuilder _builder;
+        private static readonly Random _rnd = new Random();
 
         public MainWindow()
         {
@@ -28,7 +29,9 @@ namespace MagicSquare8
             SumResultsText.Text = string.Empty;
 
             //Genera y construye
-            var numbers = _numberGenerator.Generate().ToList();
+            var numbers = _numberGenerator.Generate().ToList()
+                      .OrderBy(x => _rnd.Next())   
+                      .ToList();
             var square = _builder.Build(numbers);
 
             if (square == null)
