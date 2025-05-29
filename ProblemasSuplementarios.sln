@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tic-Tac-Toe", "Tic-Tac-Toe\Tic-Tac-Toe.csproj", "{F254AA9D-5EFC-4AA6-B903-0CA6ED3494FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicSquare8", "MagicSquare8\MagicSquare8.csproj", "{1A78DEC4-6D2D-469B-B583-572B2B2B4B13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F254AA9D-5EFC-4AA6-B903-0CA6ED3494FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F254AA9D-5EFC-4AA6-B903-0CA6ED3494FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F254AA9D-5EFC-4AA6-B903-0CA6ED3494FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A78DEC4-6D2D-469B-B583-572B2B2B4B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A78DEC4-6D2D-469B-B583-572B2B2B4B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A78DEC4-6D2D-469B-B583-572B2B2B4B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A78DEC4-6D2D-469B-B583-572B2B2B4B13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
