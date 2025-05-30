@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumaFracciones", "SumaFracc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangrama", "Pagrama\Pangrama.csproj", "{BF0FCB17-5600-1B6E-3FAD-BF611A3579CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicSquare8", "MagicSquare8\MagicSquare8.csproj", "{44347589-EB9B-D76F-6DA4-E9F3AAA96676}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{BF0FCB17-5600-1B6E-3FAD-BF611A3579CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF0FCB17-5600-1B6E-3FAD-BF611A3579CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF0FCB17-5600-1B6E-3FAD-BF611A3579CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44347589-EB9B-D76F-6DA4-E9F3AAA96676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44347589-EB9B-D76F-6DA4-E9F3AAA96676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44347589-EB9B-D76F-6DA4-E9F3AAA96676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44347589-EB9B-D76F-6DA4-E9F3AAA96676}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
