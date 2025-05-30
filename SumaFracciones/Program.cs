@@ -1,4 +1,4 @@
-﻿namespace OrdenaFracciones;
+﻿namespace SumaFracciones;
 
 public class Program
 {
@@ -8,7 +8,6 @@ public class Program
         System.Console.WriteLine("Ingrese el número de fracciones que quiere ingresar");
         int n = Convert.ToInt32(System.Console.ReadLine());
         IConverter<string, Fraction> converter = new StringFractionConverter();
-        ISorter<Fraction> sorter = new QuickSorter<Fraction>();
         IValidator validator = new FractionValidator();
         Fraction[] fractions = new Fraction[n];
         Fraction result = converter.Convert("0");
@@ -24,11 +23,6 @@ public class Program
             }
             fractions[i] = converter.Convert(input);
             result = result.Add(fractions[i]);
-        }
-        System.Console.WriteLine("------Ordenación------------");
-        foreach (Fraction item in sorter.Sort(fractions))
-        {
-            System.Console.WriteLine(item);
         }
         System.Console.WriteLine("-------Total------------");
         System.Console.WriteLine(result);

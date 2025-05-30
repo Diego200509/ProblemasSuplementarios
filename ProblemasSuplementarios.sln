@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ahorcado", "Ahorcado\Ahorca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdenaFracciones", "OrdenaFracciones\OrdenaFracciones.csproj", "{3F90A3BD-9873-4110-AC84-F92E50C84DCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumaFracciones", "SumaFracciones\SumaFracciones.csproj", "{22C4A090-EA12-4124-A457-B8CA0ED025AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{3F90A3BD-9873-4110-AC84-F92E50C84DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F90A3BD-9873-4110-AC84-F92E50C84DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F90A3BD-9873-4110-AC84-F92E50C84DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C4A090-EA12-4124-A457-B8CA0ED025AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C4A090-EA12-4124-A457-B8CA0ED025AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C4A090-EA12-4124-A457-B8CA0ED025AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C4A090-EA12-4124-A457-B8CA0ED025AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
