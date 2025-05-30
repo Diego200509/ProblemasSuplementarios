@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace OrdenaFracciones
+namespace SumaFracciones
 {
     public class FractionValidator:  IValidator
     {

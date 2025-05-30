@@ -12,7 +12,7 @@ public class Program
         IValidator validator = new FractionValidator();
         Fraction[] fractions = new Fraction[n];
         Fraction result = converter.Convert("0");
-        string input;
+        string? input;
         for (int i = 0; i < n; i++)
         {
             System.Console.WriteLine("Ingrese una fracción");
