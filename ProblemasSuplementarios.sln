@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumberMultiplier", "Division\RomanNumberMultiplier.csproj", "{1EC9196D-61E3-484A-AE56-93AADA260063}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. RomanNumberMultiplier", "Division\3. RomanNumberMultiplier.csproj", "{1EC9196D-61E3-484A-AE56-93AADA260063}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Check Protection", "Check Protection\Check Protection.csproj", "{52E362D9-C9F6-40CE-B60C-9BE2A209D31A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Check Protection", "Check Protection\2. Check Protection.csproj", "{52E362D9-C9F6-40CE-B60C-9BE2A209D31A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mathematical Expressions", "Mathematical Expressions\Mathematical Expressions.csproj", "{BFE1AE5A-19D9-456D-811B-7AB3E5A93203}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6. Mathematical Expressions", "Mathematical Expressions\6. Mathematical Expressions.csproj", "{BFE1AE5A-19D9-456D-811B-7AB3E5A93203}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tic-Tac-Toe", "Tic-Tac-Toe\Tic-Tac-Toe.csproj", "{F254AA9D-5EFC-4AA6-B903-0CA6ED3494FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5. Tic-Tac-Toe", "Tic-Tac-Toe\5. Tic-Tac-Toe.csproj", "{F254AA9D-5EFC-4AA6-B903-0CA6ED3494FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Division_Manual", "Division_Manual\Division_Manual.csproj", "{1082198D-DDA2-6AF8-5DF8-B7F028CA4C2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. Division_Manual", "Division_Manual\1. Division_Manual.csproj", "{1082198D-DDA2-6AF8-5DF8-B7F028CA4C2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ahorcado", "Ahorcado\Ahorcado.csproj", "{95B08FC0-811B-480D-BB39-A0EB41360C88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4. Ahorcado", "Ahorcado\4. Ahorcado.csproj", "{95B08FC0-811B-480D-BB39-A0EB41360C88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdenaFracciones", "OrdenaFracciones\OrdenaFracciones.csproj", "{3F90A3BD-9873-4110-AC84-F92E50C84DCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7. OrdenaFracciones", "OrdenaFracciones\7. OrdenaFracciones.csproj", "{3F90A3BD-9873-4110-AC84-F92E50C84DCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumaFracciones", "SumaFracciones\SumaFracciones.csproj", "{22C4A090-EA12-4124-A457-B8CA0ED025AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10. SumaFracciones", "SumaFracciones\10. SumaFracciones.csproj", "{22C4A090-EA12-4124-A457-B8CA0ED025AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pangrama", "Pagrama\Pangrama.csproj", "{BF0FCB17-5600-1B6E-3FAD-BF611A3579CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9. Pangrama", "Pagrama\9. Pangrama.csproj", "{BF0FCB17-5600-1B6E-3FAD-BF611A3579CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicSquare8", "MagicSquare8\MagicSquare8.csproj", "{44347589-EB9B-D76F-6DA4-E9F3AAA96676}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8. MagicSquare8", "MagicSquare8\8. MagicSquare8.csproj", "{44347589-EB9B-D76F-6DA4-E9F3AAA96676}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
