@@ -9,7 +9,7 @@ namespace OrdenaFracciones
 {
     public class FractionValidator:  IValidator
     {
-        private Regex _regex = new Regex(@"^[+-]?\d+/?[+-]?\d+$");
+        private Regex _regex = new Regex(@"^[+-]?\d+(/[+-]?)?\d+$");
         public bool IsValid(string? expression)
         {
             if (string.IsNullOrWhiteSpace(expression)) return false;
