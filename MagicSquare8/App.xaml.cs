@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace TresEnCalle
+namespace MagicSquare8
 {
     /// <summary>
     /// Interaction logic for App.xaml
