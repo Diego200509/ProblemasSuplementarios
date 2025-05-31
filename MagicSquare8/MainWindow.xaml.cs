@@ -2,6 +2,8 @@
 using MagicSquare8.Implementations;
 using MagicSquare8.Interfaces;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace MagicSquare8
 {
@@ -11,27 +13,31 @@ namespace MagicSquare8
     public partial class MainWindow : Window
     {
 
+        private const int N = 4;
         private readonly INumberGenerator _numberGenerator;
         private readonly IMagicSquareBuilder _builder;
         private static readonly Random _rnd = new Random();
+        private TextBlock[,] _cellBlocks = new TextBlock[N, N];
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _numberGenerator = new SpecificDigitNumberGenerator(new[] { 5, 7 }, 4);
+            _numberGenerator = new SpecificDigitNumberGenerator(new[] { 5, 7 }, N);
             _builder = new BacktrackingMagicSquareBuilder(new SumValidator());
         }
 
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
             MagicGrid.Children.Clear();
-            SumResultsText.Text = string.Empty;
+            SumResultsPanel.Children.Clear();
+            ClearHighlight();
 
-            //Genera y construye
-            var numbers = _numberGenerator.Generate().ToList()
-                      .OrderBy(x => _rnd.Next())   
-                      .ToList();
+            //Generar y construir
+            var numbers = _numberGenerator
+                            .Generate()
+                            .OrderBy(x => _rnd.Next())
+                            .ToList();
             var square = _builder.Build(numbers);
 
             if (square == null)
@@ -41,39 +47,113 @@ namespace MagicSquare8
                 return;
             }
 
-            //Pinta el cuadrado
-            const int n = 4;
-            for (int fila = 0; fila < n; fila++)
-                for (int col = 0; col < n; col++)
+            //Pintar cuadrado y guardar referencias a cada celda
+            for (int row = 0; row < N; row++)
+            {
+                for (int col = 0; col < N; col++)
                 {
-                    var tb = new TextBlock
+                    var cell = new TextBlock
                     {
-                        Text = square[fila, col].ToString(),
+                        Text = square[row, col].ToString(),
                         FontSize = 24,
                         FontWeight = FontWeights.Bold,
+                        Background = Brushes.Transparent,
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center
                     };
-                    MagicGrid.Children.Add(tb);
+                    _cellBlocks[row, col] = cell;
+                    MagicGrid.Children.Add(cell);
                 }
-
-            //Calcula y muestra las sumas
-            var lines = new List<string>();
+            }
 
             // Filas
-            for (int i = 0; i < n; i++)
-                lines.Add($"Fila {i}: {Enumerable.Range(0, n).Sum(j => square[i, j].Value)}");
+            for (int i = 0; i < N; i++)
+                AddSummaryLine(
+                    $"Fila {i}: {Enumerable.Range(0, N).Sum(j => square[i, j].Value)}",
+                    tag: $"Row:{i}"
+                );
 
             // Columnas
-            for (int j = 0; j < n; j++)
-                lines.Add($"Columna {j}: {Enumerable.Range(0, n).Sum(i => square[i, j].Value)}");
+            for (int j = 0; j < N; j++)
+                AddSummaryLine(
+                    $"Columna {j}: {Enumerable.Range(0, N).Sum(i => square[i, j].Value)}",
+                    tag: $"Col:{j}"
+                );
 
             // Diagonales
-            lines.Add($"Diagonal principal: {Enumerable.Range(0, n).Sum(i => square[i, i].Value)}");
-            lines.Add($"Diagonal secundaria: {Enumerable.Range(0, n).Sum(i => square[i, n - 1 - i].Value)}");
+            AddSummaryLine(
+                $"Diagonal principal: {Enumerable.Range(0, N).Sum(i => square[i, i].Value)}",
+                tag: "Diag:0"
+            );
+            AddSummaryLine(
+                $"Diagonal secundaria: {Enumerable.Range(0, N).Sum(i => square[i, N - 1 - i].Value)}",
+                tag: "Diag:1"
+            );
+        }
 
-            // Une con saltos de línea
-            SumResultsText.Text = string.Join("\n", lines);
+        private void AddSummaryLine(string text, string tag)
+        {
+            var tb = new TextBlock
+            {
+                Text = text,
+                Margin = new Thickness(2),
+                Tag = tag,
+                Cursor = Cursors.Hand
+            };
+            tb.MouseEnter += SummaryLine_MouseEnter;
+            tb.MouseLeave += SummaryLine_MouseLeave;
+            SumResultsPanel.Children.Add(tb);
+        }
+
+        private void SummaryLine_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (sender is not TextBlock tb || tb.Tag is not string tag) return;
+            var parts = tag.Split(':');
+            var type = parts[0];
+            var idx = int.Parse(parts[1]);
+            Highlight(type, idx);
+        }
+
+        private void SummaryLine_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ClearHighlight();
+        }
+
+        private void Highlight(string type, int idx)
+        {
+            ClearHighlight();
+            switch (type)
+            {
+                case "Row":
+                    for (int c = 0; c < N; c++)
+                        _cellBlocks[idx, c].Background = Brushes.LightYellow;
+                    break;
+                case "Col":
+                    for (int r = 0; r < N; r++)
+                        _cellBlocks[r, idx].Background = Brushes.LightYellow;
+                    break;
+                case "Diag":
+                    if (idx == 0)
+                        for (int i = 0; i < N; i++)
+                            _cellBlocks[i, i].Background = Brushes.LightYellow;
+                    else
+                        for (int i = 0; i < N; i++)
+                            _cellBlocks[i, N - 1 - i].Background = Brushes.LightYellow;
+                    break;
+            }
+        }
+
+        private void ClearHighlight()
+        {
+            for (int r = 0; r < N; r++)
+            {
+                for (int c = 0; c < N; c++)
+                {
+                    var cell = _cellBlocks[r, c];
+                    if (cell != null)
+                        cell.Background = Brushes.Transparent;
+                }
+            }
         }
     }
 }

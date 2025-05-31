@@ -10,37 +10,32 @@
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <!-- Botón -->
-            <RowDefinition Height="*"/>
-            <!-- Cuadrícula -->
-            <RowDefinition Height="Auto"/>
-            <!-- Resultados -->
+            <RowDefinition Height="Auto" />
+
+            <RowDefinition Height="*" />
+
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- 1) Botón de generación -->
         <Button Grid.Row="0"
                 Name="GenerateButton"
                 Content="Generar Cuadrado Mágico"
                 Padding="8"
                 Margin="0,0,0,10"
-                Click="GenerateButton_Click"/>
+                Click="GenerateButton_Click" />
 
-        <!-- 2) UniformGrid 4×4 -->
         <UniformGrid Grid.Row="1"
                      Name="MagicGrid"
                      Rows="4" Columns="4"
                      HorizontalAlignment="Stretch"
-                     VerticalAlignment="Stretch"/>
+                     VerticalAlignment="Stretch" />
 
-        <!-- 3) TextBlock para mostrar las sumas -->
         <ScrollViewer Grid.Row="2"
                       Margin="0,10,0,0"
                       Height="120"
                       VerticalScrollBarVisibility="Auto">
-            <TextBlock Name="SumResultsText"
-                       FontSize="14"
-                       TextWrapping="Wrap"/>
+            <StackPanel Name="SumResultsPanel"
+                        Orientation="Vertical" />
         </ScrollViewer>
     </Grid>
 </Window>
