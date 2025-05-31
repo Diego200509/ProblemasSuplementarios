@@ -19,7 +19,6 @@ namespace MagicSquare8
         {
             InitializeComponent();
 
-            _numberGenerator = new SpecificDigitNumberGenerator(new[] { 5, 7 }, 4);
             _builder = new BacktrackingMagicSquareBuilder(new SumValidator());
         }
 
@@ -28,10 +27,17 @@ namespace MagicSquare8
             MagicGrid.Children.Clear();
             SumResultsText.Text = string.Empty;
 
-            //Genera y construye
-            var numbers = _numberGenerator.Generate().ToList()
-                      .OrderBy(x => _rnd.Next())   
-                      .ToList();
+            // Genera dos dígitos aleatorios únicos entre 1 y 9
+            var digits = new HashSet<int>();
+            while (digits.Count < 2)
+                digits.Add(_rnd.Next(1, 10));
+
+            // Crea el generador dinámicamente en cada clic
+            var numberGenerator = new SpecificDigitNumberGenerator(digits.ToArray(), 4);
+            var numbers = numberGenerator.Generate().ToList()
+                          .OrderBy(x => _rnd.Next()) // aleatoriza el orden
+                          .ToList();
+
             var square = _builder.Build(numbers);
 
             if (square == null)
@@ -41,7 +47,7 @@ namespace MagicSquare8
                 return;
             }
 
-            //Pinta el cuadrado
+            // Pinta el cuadrado
             const int n = 4;
             for (int fila = 0; fila < n; fila++)
                 for (int col = 0; col < n; col++)
@@ -57,22 +63,18 @@ namespace MagicSquare8
                     MagicGrid.Children.Add(tb);
                 }
 
-            //Calcula y muestra las sumas
+            // Calcula y muestra las sumas
             var lines = new List<string>();
 
-            // Filas
             for (int i = 0; i < n; i++)
                 lines.Add($"Fila {i}: {Enumerable.Range(0, n).Sum(j => square[i, j].Value)}");
 
-            // Columnas
             for (int j = 0; j < n; j++)
                 lines.Add($"Columna {j}: {Enumerable.Range(0, n).Sum(i => square[i, j].Value)}");
 
-            // Diagonales
             lines.Add($"Diagonal principal: {Enumerable.Range(0, n).Sum(i => square[i, i].Value)}");
             lines.Add($"Diagonal secundaria: {Enumerable.Range(0, n).Sum(i => square[i, n - 1 - i].Value)}");
 
-            // Une con saltos de línea
             SumResultsText.Text = string.Join("\n", lines);
         }
     }
